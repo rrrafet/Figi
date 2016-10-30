@@ -1,6 +1,6 @@
 import OpenFIGI
 import pandas as pd
-import requests
+
 
 def main():
     # OpenFIGI instance
@@ -11,10 +11,11 @@ def main():
 
     # Generate request string from file
     df = pd.read_csv('sample.csv', sep=';')
-    y = list(map(lambda x: of.generate_request(idtype='ID_SEDOL',idvalue=x),df.iloc[:,4]))
+    y = list(map(lambda x: of.generate_request(idtype='ID_SEDOL', idvalue=x), df.iloc[:, 4]))
 
     result = of.post_requests(y)
     print(result.text)
+
 
 if __name__ == '__main__':
     main()
